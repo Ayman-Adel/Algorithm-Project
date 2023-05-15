@@ -1,3 +1,16 @@
+import random
+
+def generate_array(num_arrays):
+    result = []
+    for _ in range(num_arrays):
+        first_num = random.randint(1, 5)
+        middle_num = random.randint(first_num + 1, 10)
+        last_num = random.randint(10, 100)
+        inner_array = [first_num, middle_num, last_num]
+        result.append(inner_array)
+    return result
+
+
 import bisect as bs
 def max_profit(jops):   #create function to take 3 element (startTime, endTime, profit)
     jobs=sorted(jops,key =lambda x: x[1])   #Sort jobs by end time
@@ -16,6 +29,6 @@ def max_profit(jops):   #create function to take 3 element (startTime, endTime, 
         dp[i]=max(dp[i],(dp[index] if index >= 0 else 0)+p) 
     return dp[-1]
 
-jobs = [[1,6,6],[2,5,5],[5,7,5],[6,8,3]]
-ob = max_profit(jobs)
+sample_array = generate_array(4)
+ob = max_profit(sample_array)
 print(ob)
